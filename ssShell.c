@@ -11,7 +11,12 @@ int main()
 		int ret;
 
 		ret = readline(&inbuf);
-
+		inbuf[strcspn(inbuf, "\n")] = '\0';
+		if (strcmp(inbuf, "exit") == 0)
+		{
+			free(inbuf);
+			exit(1);
+		}
 		if (ret >= 0)
 			forkexec(inbuf);
 		else
