@@ -1,10 +1,14 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "main.h"
 
 int main(void)
 {
+	char **args = NULL;
 	char *buffer = NULL;
+	int i = 0;
 	size_t bufsize = 0;
 	ssize_t char_read;
 
@@ -23,7 +27,24 @@ int main(void)
 			break;
 		}
 
-		write(STDOUT_FILENO, buffer, char_read);
+		/** Remove trailing newline added by getline() */
+		if (char_read > 0 && buffer[char_read - 1] == '\n')
+			buffer[char_read - 1] = '\0';
+
+		/** Tokenise the input string using spaces as the delim */
+		args = stringsplit(buffer, " ");
+		if (args == NULL)
+			continue;
+
+		/** Print out each tokenised argument */
+		for (i = 0; args[i] != NULL; i++)
+		{
+			write(STDOUT_FILENO, "Token: ", 7);
+			write(STDOUT_FILENO, args[i], strlen(args[i]));
+			write(STDOUT_FILENO, "\n", 1);
+		}
+
+		free(args);
 	}
 
 	return (0);
