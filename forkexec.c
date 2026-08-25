@@ -4,7 +4,7 @@ int forkexec(char *buffer)
 {
 	pid_t child_pid;
 	int status;
-	char *argv[] = {"/bin/ls", NULL};
+	char *argv[] = {"", NULL};
 	char *const envp[] = {"USER=guest", NULL};
 
 	buffer[strcspn(buffer, "\n")] = '\0';
