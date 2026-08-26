@@ -1,11 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 char **stringsplit(char *str, const char *delim, int *token_count)
 {
 	char **tokens = NULL;
-	char **temp = NULL;
 	char *token = NULL;
 	int i = 0;
 	int capacity = 10;
@@ -23,18 +20,19 @@ char **stringsplit(char *str, const char *delim, int *token_count)
 		tokens[i] = token;
 		i++;
 
+		/** no realloc
+		 * 	char **temp = NULL;
 		if (i >= capacity - 1)
 		{
 			capacity += 10;
 			temp = realloc(tokens, sizeof(char *) * capacity);
 			if (temp == NULL)
 			{
-				free(tokens);
 				return (NULL);
 			}
 			tokens = temp;
 		}
-
+		*/
 		token = strtok(NULL, delim);
 	}
 

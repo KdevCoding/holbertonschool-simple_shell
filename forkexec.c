@@ -11,7 +11,10 @@ int forkexec(char **args)
 	if (child_pid == 0)
 	{
 		if (execve(args[0], args, envp) == -1)
+		{
 			perror("exec error");
+			exit(0);
+		}
 	}
 	else
 		wait(&status);
