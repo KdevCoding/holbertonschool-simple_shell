@@ -8,7 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int readline(char **buffer);
-int forkexec(char *buffer);
+char **readline(int *token_count);
+int forkexec(char **args);
+char **stringsplit(char *str, const char *delim, int *token_count);
 
 #endif /*_main_h_*/
