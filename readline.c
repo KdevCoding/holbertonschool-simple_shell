@@ -7,12 +7,15 @@
 int readline(char **buffer)
 {
 	size_t bufsize = 0;
-	ssize_t chars;
+	ssize_t char_read;
+
 	printf("$ ");
-	chars = getline(buffer, &bufsize, stdin);
-
-	if (chars == -1)
+	char_read = getline(buffer, &bufsize, stdin);
+	if (char_read == -1)
+	{
 		printf("Error or EOF reached.\n");
+		return (char_read);
+	}
 
-	return (chars);
+	return (char_read);
 }

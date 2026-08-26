@@ -2,10 +2,7 @@
 
 int main()
 {
-	int active;
-
-	active = 1;
-	while (active)
+	while (1)
 	{
 		char *inbuf = 0;
 		int ret;
@@ -21,7 +18,7 @@ int main()
 			forkexec(inbuf);
 		else
 		{
-			perror("error: ");
+			perror("error");
 			free(inbuf);
 			return (1);
 		}
