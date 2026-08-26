@@ -15,7 +15,10 @@ int main()
 			exit(1);
 		}
 		if (ret >= 0)
+		{
 			forkexec(inbuf);
+			free(inbuf);
+		}
 		else
 		{
 			perror("error");
