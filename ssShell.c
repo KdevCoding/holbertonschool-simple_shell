@@ -15,12 +15,10 @@ int main()
 			free(args);
 			exit(1);
 		}
-		if (token_count >= 1)
+		if (ret >= 0)
 		{
-			forkexec(args);
-			free(args[0]);
-			free(args);
-			continue;
+			forkexec(inbuf);
+			free(inbuf);
 		}
 		else
 		{
