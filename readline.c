@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * readline - reads user input
+ *
+ * Return: file and args to run
+ */
 char **readline(int *token_count)
 {
 	char **args;
@@ -7,7 +12,7 @@ char **readline(int *token_count)
 	size_t bufsize = 0;
 	ssize_t char_read;
 
-	printf("$ ");
+	printf("Shell$ ");
 	char_read = getline(&buffer, &bufsize, stdin);
 	if (char_read == -1)
 	{

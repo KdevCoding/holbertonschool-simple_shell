@@ -1,6 +1,11 @@
 #include "main.h"
 
-int main()
+/**
+ * main - main loop for shell
+ *
+ * Return: 1 on error else 0
+ */
+int main(void)
 {
 	while (1)
 	{

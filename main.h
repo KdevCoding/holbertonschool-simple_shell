@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 char **readline(int *token_count);
 int forkexec(char **args);
 char **stringsplit(char *str, const char *delim, int *token_count);

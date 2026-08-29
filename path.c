@@ -1,8 +1,5 @@
 #include "main.h"
 
-
-extern char **environ;
-
 /**
  * _getenv - Function to locate a specific environment variable.
  * @name: Name of the environment variable.
