@@ -8,9 +8,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-int readline(char **buffer);
+char **readline(int *token_count);
 int forkexec(char **args);
-char **stringsplit(char *str, const char *delim);
+char **stringsplit(char *str, const char *delim, int *token_count);
 char *_getenv(const char *name);
 char *find_path(char *command);
 

@@ -4,22 +4,29 @@ int main()
 {
 	while (1)
 	{
-		char *inbuf = 0;
-		int ret;
+		char **args;
+		int token_count;
 
-		ret = readline(&inbuf);
-		inbuf[strcspn(inbuf, "\n")] = '\0';
-		if (strcmp(inbuf, "exit") == 0)
+		args = readline(&token_count);
+
+		if (strcmp(args[0], "exit") == 0)
 		{
-			free(inbuf);
+			free(args[0]);
+			free(args);
 			exit(1);
 		}
-		if (ret >= 0)
-			forkexec(inbuf);
+		if (token_count >= 1)
+		{
+			forkexec(args);
+			free(args[0]);
+			free(args);
+			continue;
+		}
 		else
 		{
 			perror("error");
-			free(inbuf);
+			free(args[0]);
+			free(args);
 			return (1);
 		}
 	}

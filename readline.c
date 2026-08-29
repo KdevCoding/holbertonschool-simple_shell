@@ -1,21 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/wait.h>
+#include "main.h"
 
-int readline(char **buffer)
+char **readline(int *token_count)
 {
+	char **args;
+	char *buffer = NULL;
 	size_t bufsize = 0;
 	ssize_t char_read;
 
 	printf("$ ");
-	char_read = getline(buffer, &bufsize, stdin);
+	char_read = getline(&buffer, &bufsize, stdin);
 	if (char_read == -1)
 	{
 		printf("Error or EOF reached.\n");
-		return (char_read);
+		free(buffer);
+		return (NULL);
 	}
-
-	return (char_read);
+	else
+	{
+		buffer[strcspn(buffer, "\n")] = '\0';
+		args = stringsplit(buffer, " ", token_count);
+		return (args);
+	}
 }
