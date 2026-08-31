@@ -5,15 +5,32 @@ char **stringsplit(char *str, const char *delim, int *token_count)
 	char **tokens = NULL;
 	char *token = NULL;
 	int i = 0;
-	int capacity = 10;
+	int count = 0;
+	int in_token = 0;
 
 	if (str == NULL)
 		return (NULL);
 
-	tokens = malloc(sizeof(char *) * capacity);
+	while (str[i] != '\0')
+	{
+		if (strchr(delim, str[i]) == NULL)
+		{
+			if (in_token == 0)
+			{
+				count++;
+				in_token = 1;
+			}
+		}
+		else
+			in_token = 0;
+		i++;
+	}
+
+	tokens = malloc(sizeof(char *) * (count + 1));
 	if (tokens == NULL)
 		return (NULL);
 
+	i = 0;
 	token = strtok(str, delim);
 	while (token != NULL)
 	{
