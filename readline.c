@@ -1,6 +1,6 @@
 #include "main.h"
 
-char **readline(int *token_count)
+char **readline(int *token_count, char **input_buffer)
 {
 	char **args;
 	char *buffer = NULL;
@@ -13,12 +13,14 @@ char **readline(int *token_count)
 	{
 		printf("Error or EOF reached.\n");
 		free(buffer);
+		*input_buffer = NULL;
 		return (NULL);
 	}
 	else
 	{
 		buffer[strcspn(buffer, "\n")] = '\0';
 		args = stringsplit(buffer, " ", token_count);
+		*input_buffer = buffer;
 		return (args);
 	}
 }
