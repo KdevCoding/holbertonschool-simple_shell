@@ -4,7 +4,7 @@
  * forkexec - Forks the process and executes givenarg/file
  * @args: file to run
  *
- * Return: 1 if error else 0
+ * Return: 127 if error else 0
  */
 int forkexec(char **args)
 {
@@ -17,7 +17,7 @@ int forkexec(char **args)
 	if (valid_path == NULL)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-		return (1);
+		return (127);
 	}
 
 	child_pid = fork();
@@ -34,7 +34,7 @@ int forkexec(char **args)
 		{
 			perror("exec error");
 			free(valid_path);
-			exit(0);
+			exit(127);
 		}
 	}
 	else
