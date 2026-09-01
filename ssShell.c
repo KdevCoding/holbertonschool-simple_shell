@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * main - main loop for shell
+ *
+ * Return: 1 on error else 0
+ */
 int main(void)
 {
 	while (1)
