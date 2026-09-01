@@ -15,5 +15,6 @@ int forkexec(char **args);
 char **stringsplit(char *str, const char *delim, int *token_count);
 char *_getenv(const char *name);
 char *find_path(char *command);
+void printenv(void);
 
 #endif /*_main_h_*/
