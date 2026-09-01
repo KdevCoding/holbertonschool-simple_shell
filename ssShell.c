@@ -35,7 +35,10 @@ int main(void)
 				free(input_buffer);
 				exit(last_status);
 			}
-			last_status = forkexec(args);
+			if (strcmp(args[0], "env") == 0)
+				printenv();
+			else
+				last_status = forkexec(args);
 			free(args);
 			free(input_buffer);
 		}
