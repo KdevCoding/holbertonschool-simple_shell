@@ -20,29 +20,23 @@ int main(void)
 			free(input_buffer);
 			return (1);
 		}
-		if (token_count == 0)
+		if (token_count <= 0)
 		{
-			free(args);
-			free(input_buffer);
-		}
-		if (strcmp(args[0], "exit") == 0)
-		{
-			free(args);
-			free(input_buffer);
-			exit(1);
-		}
-		if (token_count >= 1)
-		{
-			forkexec(args);
 			free(args);
 			free(input_buffer);
 		}
 		else
 		{
-			perror("error");
+			if (strcmp(args[0], "exit") == 0)
+			{
+				free(args);
+				free(input_buffer);
+				exit(1);
+			}
+
+			forkexec(args);
 			free(args);
 			free(input_buffer);
-			return (1);
 		}
 	}
 	return (0);
