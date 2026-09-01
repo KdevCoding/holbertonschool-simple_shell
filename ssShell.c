@@ -15,7 +15,6 @@ int main(void)
 
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
-
 		if (args == NULL)
 		{
 			free(input_buffer);
@@ -25,7 +24,6 @@ int main(void)
 		{
 			free(args);
 			free(input_buffer);
-			continue;
 		}
 		if (strcmp(args[0], "exit") == 0)
 		{
@@ -38,7 +36,6 @@ int main(void)
 			forkexec(args);
 			free(args);
 			free(input_buffer);
-			continue;
 		}
 		else
 		{

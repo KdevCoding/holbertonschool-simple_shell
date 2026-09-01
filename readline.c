@@ -2,6 +2,8 @@
 
 /**
  * readline - reads user input
+ * @token_count: amount of tokens
+ * @input_buffer: input_buffer
  *
  * Return: file and args to run
  */

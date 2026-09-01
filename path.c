@@ -38,15 +38,12 @@ char *find_path(char *command)
 			return (strdup(command));
 		return (NULL);
 	}
-
 	path_env = _getenv("PATH");
 	if (!path_env || strlen(path_env) == 0)
 		return (NULL);
-
 	/* Duplicate environment string. */
 	path_copy = strdup(path_env);
 	token = strtok(path_copy, ":");
-
 	/* Calculate the memory. */
 	while (token != NULL)
 	{
@@ -57,21 +54,17 @@ char *find_path(char *command)
 			free(path_copy);
 			return (NULL);
 		}
-
 		/* Stitch tokens into uniform test paths. */
 		sprintf(full_path, "%s/%s", token, command);
-
 		/* Verify binary file status inside current directory. */
 		if (access(full_path, X_OK) == 0)
 		{
 			free(path_copy);
 			return (full_path);
 		}
-
 		free(full_path);
 		token = strtok(NULL, ":");
 	}
-
 	free(path_copy);
 	return (NULL);
 }
