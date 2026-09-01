@@ -14,7 +14,6 @@ int main(void)
 		int token_count;
 		int last_status;
 
-		last_status = 0;
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
 		if (args == NULL)
@@ -24,6 +23,7 @@ int main(void)
 		}
 		if (token_count <= 0)
 		{
+			last_status = 0;
 			free(args);
 			free(input_buffer);
 		}
