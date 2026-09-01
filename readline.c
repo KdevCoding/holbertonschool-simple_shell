@@ -14,7 +14,10 @@ char **readline(int *token_count, char **input_buffer)
 	size_t bufsize = 0;
 	ssize_t char_read;
 
-	printf("Shell$ ");
+	if (isatty(STDIN_FILENO))
+	{
+		printf("Shell$ ");
+	}
 	char_read = getline(&buffer, &bufsize, stdin);
 	if (char_read == -1)
 	{

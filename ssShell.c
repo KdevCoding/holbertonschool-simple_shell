@@ -18,7 +18,7 @@ int main(void)
 		if (args == NULL)
 		{
 			free(input_buffer);
-			return (1);
+			return (0);
 		}
 		if (token_count <= 0)
 		{
@@ -31,7 +31,7 @@ int main(void)
 			{
 				free(args);
 				free(input_buffer);
-				exit(1);
+				exit(0);
 			}
 
 			forkexec(args);
