@@ -17,7 +17,7 @@ int forkexec(char **args)
 	if (valid_path == NULL)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-		return (1);
+		return (127);
 	}
 
 	child_pid = fork();
@@ -34,12 +34,15 @@ int forkexec(char **args)
 		{
 			perror("exec error");
 			free(valid_path);
-			exit(0);
+			exit(127);
 		}
 	}
 	else
 		wait(&status);
-
 	free(valid_path);
-	return (0);
+	
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+
+return (1);
 }
