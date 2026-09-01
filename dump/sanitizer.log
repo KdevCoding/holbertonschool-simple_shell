@@ -1,0 +1,166 @@
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: Permission denied
+exec error: Permission denied
+exec error: Permission denied
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+exec error: No such file or directory
+=================================================================
+==29024==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x607000003b10 at pc 0x000102391374 bp 0x00016da6ea40 sp 0x00016da6ea38
+WRITE of size 8 at 0x607000003b10 thread T0
+    #0 0x000102391370 in stringsplit tokenisation.c:20
+    #1 0x000102390d8c in readline readline.c:22
+    #2 0x000102391040 in main ssShell.c:12
+    #3 0x000184ebbdfc in start+0x1b4c (dyld:arm64e+0x1fdfc)
+
+0x607000003b10 is located 0 bytes after 80-byte region [0x607000003ac0,0x607000003b10)
+allocated by thread T0 here:
+    #0 0x000102cc9164 in malloc+0x78 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x41164)
+    #1 0x0001023912f4 in stringsplit tokenisation.c:13
+    #2 0x000102390d8c in readline readline.c:22
+    #3 0x000102391040 in main ssShell.c:12
+    #4 0x000184ebbdfc in start+0x1b4c (dyld:arm64e+0x1fdfc)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow tokenisation.c:20 in stringsplit
+Shadow bytes around the buggy address:
+  0x607000003880: fa fa fd fd fd fd fd fd fd fd fd fd fa fa fa fa
+  0x607000003900: fd fd fd fd fd fd fd fd fd fd fa fa fa fa fd fd
+  0x607000003980: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+  0x607000003a00: fd fd fd fd fd fd fa fa fa fa fd fd fd fd fd fd
+  0x607000003a80: fd fd fd fd fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x607000003b00: 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x607000003b80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x607000003c00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x607000003c80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x607000003d00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x607000003d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==29024==ABORTING
