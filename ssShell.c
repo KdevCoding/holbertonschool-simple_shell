@@ -7,12 +7,13 @@
  */
 int main(void)
 {
+	int last_status = 0;
+
 	while (1)
 	{
 		char **args;
 		char *input_buffer;
 		int token_count;
-		int last_status;
 
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
@@ -23,7 +24,6 @@ int main(void)
 		}
 		if (token_count <= 0)
 		{
-			last_status = 0;
 			free(args);
 			free(input_buffer);
 		}
@@ -35,7 +35,6 @@ int main(void)
 				free(input_buffer);
 				exit(last_status);
 			}
-
 			last_status = forkexec(args);
 			free(args);
 			free(input_buffer);
