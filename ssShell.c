@@ -8,6 +8,7 @@
 int main(void)
 {
 	int last_status = 0;
+	signal(SIGINT, SIG_IGN);
 
 	while (1)
 	{
