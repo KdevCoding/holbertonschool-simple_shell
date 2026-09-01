@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * stringsplit - splits given 'string' by given delim
+ * @str:str to split
+ * @delim: what to split by
+ * @token_count: where to put count of tokens/splits
+ *
+ * Return: Pointer to the value string, else NULL.
+ */
 char **stringsplit(char *str, const char *delim, int *token_count)
 {
 	char **tokens = NULL;
@@ -10,7 +18,6 @@ char **stringsplit(char *str, const char *delim, int *token_count)
 
 	if (str == NULL)
 		return (NULL);
-
 	while (str[i] != '\0')
 	{
 		if (strchr(delim, str[i]) == NULL)
@@ -25,34 +32,17 @@ char **stringsplit(char *str, const char *delim, int *token_count)
 			in_token = 0;
 		i++;
 	}
-
 	tokens = malloc(sizeof(char *) * (count + 1));
 	if (tokens == NULL)
 		return (NULL);
-
 	i = 0;
 	token = strtok(str, delim);
 	while (token != NULL)
 	{
 		tokens[i] = token;
 		i++;
-
-		/** no realloc
-		 * 	char **temp = NULL;
-		if (i >= capacity - 1)
-		{
-			capacity += 10;
-			temp = realloc(tokens, sizeof(char *) * capacity);
-			if (temp == NULL)
-			{
-				return (NULL);
-			}
-			tokens = temp;
-		}
-		*/
 		token = strtok(NULL, delim);
 	}
-
 	tokens[i] = NULL;
 	if (token_count != NULL)
 	{
