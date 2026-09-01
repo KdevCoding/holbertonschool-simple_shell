@@ -12,13 +12,15 @@ int main(void)
 		char **args;
 		char *input_buffer;
 		int token_count;
+		int last_status;
 
+		last_status = 0;
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
 		if (args == NULL)
 		{
 			free(input_buffer);
-			return (0);
+			return (last_status);
 		}
 		if (token_count <= 0)
 		{
@@ -31,10 +33,10 @@ int main(void)
 			{
 				free(args);
 				free(input_buffer);
-				exit(0);
+				exit(last_status);
 			}
 
-			forkexec(args);
+			last_status = forkexec(args);
 			free(args);
 			free(input_buffer);
 		}
