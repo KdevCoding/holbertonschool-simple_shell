@@ -31,7 +31,7 @@ int main(void)
 			{
 				free(args);
 				free(input_buffer);
-				exit(1);
+			exit(0);
 			}
 
 			forkexec(args);

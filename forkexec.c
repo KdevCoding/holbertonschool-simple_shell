@@ -34,7 +34,7 @@ int forkexec(char **args)
 		{
 			perror("exec error");
 			free(valid_path);
-			exit(127);
+			exit(1);
 		}
 	}
 	else
