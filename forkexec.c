@@ -4,7 +4,7 @@
  * forkexec - Forks the process and executes givenarg/file
  * @args: file to run
  *
- * Return: 1 if error else 0
+ * Return: 127 if error else 0
  */
 int forkexec(char **args)
 {
