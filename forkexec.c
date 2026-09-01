@@ -16,7 +16,7 @@ int forkexec(char **args)
 	valid_path = find_path(args[0]);
 	if (valid_path == NULL)
 	{
-		fprintf(stderr, "Shell: %s: not found\n", args[0]);
+		fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
 		return (1);
 	}
 
@@ -25,7 +25,7 @@ int forkexec(char **args)
 	{
 		perror("Fork status failure");
 		free(valid_path);
-		return (1);
+		return (127);
 	}
 
 	if (child_pid == 0)
