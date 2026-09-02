@@ -23,11 +23,7 @@ int main(void)
 			free(input_buffer);
 			return (last_status);
 		}
-		if (token_count <= 0)
-		{
-			continue;
-		}
-		else
+		if (token_count > 0)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
