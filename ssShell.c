@@ -32,6 +32,8 @@ int main(void)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
+				if (token_count > 1)
+					last_status = _atoi(args[1]);
 				free(args);
 				free(input_buffer);
 				exit(last_status);
