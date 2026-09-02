@@ -8,8 +8,8 @@
 int main(void)
 {
 	int last_status = 0;
-	signal(SIGINT, SIG_IGN);
 
+	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
 		char **args;
@@ -25,8 +25,7 @@ int main(void)
 		}
 		if (token_count <= 0)
 		{
-			free(args);
-			free(input_buffer);
+			continue;
 		}
 		else
 		{
@@ -42,9 +41,9 @@ int main(void)
 				printenv();
 			else
 				last_status = forkexec(args);
-			free(args);
-			free(input_buffer);
 		}
+		free(args);
+		free(input_buffer);
 	}
 	return (0);
 }

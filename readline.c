@@ -21,7 +21,6 @@ char **readline(int *token_count, char **input_buffer)
 	char_read = getline(&buffer, &bufsize, stdin);
 	if (char_read == -1)
 	{
-		/* printf("Error or EOF reached.\n"); */
 		free(buffer);
 		*input_buffer = NULL;
 		return (NULL);
