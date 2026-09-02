@@ -1,1 +1,36 @@
-MAN
+.TH HSH 1
+.SH NAME
+hsh \- simple_shell - a Unix command line interpreter.
+.SH SYNOPSIS
+.B ./hsh
+.SH DESCRIPTION
+.B hsh
+is a customised Unix command line interpreter that executes commands read, emulating basic features of the POSIX standard unix shell. It prints a prompt, reads an input, parses the arguments into tokens, searches the environment path and executes commands in an independant forked child process.
+.PP
+The application supports interactive terminal interaction, signals like Ctrl+C are successfully caught to keep the shell session running.
+
+.SH FEATURES
+The shell supports absolute and relative path executions.
+.TP
+.B exit
+Terminates the shell, the execution exits back to the parent process using the return code of the most recent command pipeline.
+.TP
+.B env
+Prints all global environment key\-value pairs associated with the active terminal profile to stdout.
+
+.SH ERROR HANDLING
+If a command cannot be resolved within the environment paths, \fBhsh\fR writes a descriptive diagnostic error trace directly into standard error formatting:
+.IP
+\fI./hsh: 1: <command>: not found\fR
+.PP
+Internal engine operations automatically free allocated heap structures during unexpected fork failures, execution faults, or EOF terminations to preserve memory sanitization boundaries.
+
+.SH BUGS
+N/A
+
+.SH SEE ALSO
+.BR sh (1),
+.BR bash (1),
+.BR fork (2),
+.BR execve (2),
+.BR wait (2)
