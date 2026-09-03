@@ -28,7 +28,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		if (count + 1 >= *n)
 		{
-			new_line = malloc(*n * 2);
+			*n *= 2;
+			new_line = malloc(*n);
 			if (!new_line)
 				return (-1);
 			i = 0;
@@ -39,7 +40,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			}
 			free(*lineptr);
 			*lineptr = new_line;
-			*n *= 2;
 		}
 		(*lineptr)[count++] = (char)c;
 		if (c == '\n')
