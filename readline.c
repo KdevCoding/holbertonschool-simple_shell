@@ -18,7 +18,7 @@ char **readline(int *token_count, char **input_buffer)
 	{
 		printf("Shell$ ");
 	}
-	char_read = getline(&buffer, &bufsize, stdin);
+	char_read = _getline(&buffer, &bufsize, stdin);
 	if (char_read == -1)
 	{
 		free(buffer);
