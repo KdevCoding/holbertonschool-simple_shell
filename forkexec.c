@@ -11,7 +11,6 @@ int forkexec(char **args)
 	pid_t child_pid;
 	int status;
 	char *valid_path;
-	/* char *const envp[] = {"USER=guest", NULL}; */
 
 	valid_path = find_path(args[0]);
 	if (valid_path == NULL)
@@ -19,7 +18,6 @@ int forkexec(char **args)
 		fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
 		return (127);
 	}
-
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -27,7 +25,6 @@ int forkexec(char **args)
 		free(valid_path);
 		return (127);
 	}
-
 	if (child_pid == 0)
 	{
 		if (execve(valid_path, args, environ) == -1)
@@ -40,9 +37,7 @@ int forkexec(char **args)
 	else
 		wait(&status);
 	free(valid_path);
-	
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
-
-return (1);
+	return (1);
 }

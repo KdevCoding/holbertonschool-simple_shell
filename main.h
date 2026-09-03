@@ -17,5 +17,6 @@ char **stringsplit(char *str, const char *delim, int *token_count);
 char *_getenv(const char *name);
 char *find_path(char *command);
 void printenv(void);
+int _atoi(char *s);
 
 #endif /*_main_h_*/
