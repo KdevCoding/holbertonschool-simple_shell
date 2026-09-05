@@ -19,5 +19,6 @@ char *find_path(char *command);
 void printenv(void);
 int _atoi(char *s);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+void remall(size_t *n, char **new_line, size_t *count, char **lineptr);
 
 #endif /*_main_h_*/
