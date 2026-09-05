@@ -65,7 +65,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			break;
 		res = read(0, &c, 1);
 	}
-	if (count == 0 && c == EOF)
+	if (count == 0 && res == EOF)
 		return (-1);
 	(*lineptr)[count] = '\0';
 	return ((ssize_t)count);
