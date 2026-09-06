@@ -19,7 +19,7 @@ int exitc(int token_count, char *arg, int *last_status)
 		{
 			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s", arg);
 			if (isatty(STDIN_FILENO))
-				printf("\n");
+				fprintf(stderr, "\n");
 			*last_status = 2;
 			ret = -1;
 		}
