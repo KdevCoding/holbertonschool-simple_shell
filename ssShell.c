@@ -16,7 +16,7 @@ int exitc(int token_count, char *arg, int *last_status)
 		*last_status = _atoi(arg);
 	if (*last_status < 0)
 	{
-		printf("./hsh: 1: exit: Illegal number: %i", *last_status);
+		fprintf(stderr, "./hsh: 1: exit: Illegal number: %i", *last_status);
 		if (isatty(STDIN_FILENO))
 			printf("\n");
 		*last_status = 2;
