@@ -17,9 +17,7 @@ int exitc(int token_count, char *arg, int *last_status)
 		*last_status = _atoi(arg);
 		if (*last_status < 0 || (arg[1] < 48 || arg[1] > 57))
 		{
-			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s", arg);
-			if (isatty(STDIN_FILENO))
-				fprintf(stderr, "\n");
+			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", arg);
 			*last_status = 2;
 			ret = -1;
 		}
