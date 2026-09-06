@@ -1,16 +1,19 @@
 #include "main.h"
 
 /**
- * main - main loop for shell
+ * exitc - does calcs to exit
+ * @token_count: how many input arguments
+ * @arg: argument to convert to int
+ * @last_status: where to put exit status
  *
- * Return: 1 on error else 0
+ * Return: -1 if negative else 1
  */
-int exitc(int token_count, char *args, int *last_status)
+int exitc(int token_count, char *arg, int *last_status)
 {
 	int ret = 1;
 
 	if (token_count > 1)
-		*last_status = _atoi(args);
+		*last_status = _atoi(arg);
 	if (*last_status < 0)
 	{
 		printf("./hsh: 1: exit: Illegal number: %i", *last_status);
