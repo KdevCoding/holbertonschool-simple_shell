@@ -64,7 +64,7 @@ int main(void)
 			else
 			{
 				f = func_spec(args[0]);
-				last_status = f(args);
+				last_status = f(token_count, args);
 			}
 		}
 		free(args);
