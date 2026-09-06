@@ -3,7 +3,7 @@
 /**
  * printenv - prints environment
  * @args: user input
- *
+ * @token_count: how many args user gave
  * Return: always 0
  */
 int printenv(int token_count, char **args)
@@ -23,7 +23,7 @@ int printenv(int token_count, char **args)
 /**
  * _setenv - sets enviro variable
  * @args: user input
- *
+ * @token_count: how many args user gave
  * Return: always 0
  */
 int _setenv(int token_count, char **args)
@@ -31,7 +31,7 @@ int _setenv(int token_count, char **args)
 	int res = 0;
 
 	if (token_count >= 3)
-		res = setenv(args[1], args[2], 1);
+		res = setenv(args[1], args[2], 1); /* ran out of time to remake*/
 	else
 		fprintf(stderr, "./hsh: 1: setenv: No name/var given: %s\n", args[0]);
 
@@ -46,10 +46,10 @@ int _setenv(int token_count, char **args)
 /**
  * _unsetenv - sets enviro variable
  * @args: user input
- *
+ * @token_count: how many args user gave
  * Return: always 0
  */
-int _unsetenv(int token_count, char **args)
+int _unsetenv(int token_count, char **args) /* ran out of time to remake*/
 {
 	int res;
 	(void)token_count;
