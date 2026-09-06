@@ -5,6 +5,28 @@
  *
  * Return: 1 on error else 0
  */
+int exitc(int token_count, char *args, int *last_status)
+{
+	int ret = 1;
+
+	if (token_count > 1)
+		*last_status = _atoi(args);
+	if (*last_status < 0)
+	{
+		printf("./hsh: 1: exit: Illegal number: %i", *last_status);
+		if (isatty(STDIN_FILENO))
+			printf("\n");
+		*last_status = 2;
+		ret = -1;
+	}
+	return (ret);
+}
+
+/**
+ * main - main loop for shell
+ *
+ * Return: 1 on error else 0
+ */
 int main(void)
 {
 	int last_status = 0;
@@ -14,7 +36,7 @@ int main(void)
 	{
 		char **args;
 		char *input_buffer;
-		int token_count;
+		int token_count, ret;
 
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
@@ -27,13 +49,15 @@ int main(void)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
-				if (token_count > 1)
-					last_status = _atoi(args[1]);
-				free(args);
-				free(input_buffer);
-				exit(last_status);
+				ret = exitc(token_count, args[1], &last_status);
+				if (ret >= 0)
+				{
+					free(args);
+					free(input_buffer);
+					exit(last_status);
+				}
 			}
-			if (strcmp(args[0], "env") == 0)
+			else if (strcmp(args[0], "env") == 0)
 				printenv();
 			else
 				last_status = forkexec(args);
