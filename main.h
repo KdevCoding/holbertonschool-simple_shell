@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <errno.h>
 
 extern char **environ;
 
@@ -37,5 +38,6 @@ int printenv(char **args);
 int _atoi(char *s);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void remall(size_t *n, char **new_line, size_t *count, char **lineptr);
-
+int _setenv(char **args);
+int _unsetenv(char **args);
 #endif /*_main_h_*/
