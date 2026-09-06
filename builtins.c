@@ -6,11 +6,12 @@
  *
  * Return: always 0
  */
-int printenv(char **args)
+int printenv(int token_count, char **args)
 {
 	int i = 0;
 
 	(void)args;
+	(void)token_count;
 	while (environ[i] != NULL)
 	{
 		printf("%s\n", environ[i]);
@@ -25,16 +26,18 @@ int printenv(char **args)
  *
  * Return: always 0
  */
-int _setenv(char **args)
+int _setenv(int token_count, char **args)
 {
-	int res;
+	int res = 0;
 
-	res = setenv(args[1], args[2], 1);
+	if (token_count >= 3)
+		res = setenv(args[1], args[2], 1);
+	else
+		fprintf(stderr, "./hsh: 1: setenv: No name/var given: %s\n", args[0]);
+
 	if (res == -1)
 	{
-		if (errno == EINVAL)
-			fprintf(stderr, "./hsh: 1: setenv: No name given: %s\n", args[0]);
-		else if (errno == ENOMEM)
+		if (errno == ENOMEM)
 			fprintf(stderr, "./hsh: 1: setenv: Insufficient memory: %s\n", args[0]);
 	}
 	return (0);
@@ -46,9 +49,10 @@ int _setenv(char **args)
  *
  * Return: always 0
  */
-int _unsetenv(char **args)
+int _unsetenv(int token_count, char **args)
 {
 	int res;
+	(void)token_count;
 
 	res = unsetenv(args[1]);
 	if (res == -1)

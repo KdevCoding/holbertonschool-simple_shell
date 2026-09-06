@@ -6,12 +6,13 @@
  *
  * Return: 127 if error else 0
  */
-int forkexec(char **args)
+int forkexec(int token_count, char **args)
 {
 	pid_t child_pid;
 	int status;
 	char *valid_path;
 
+	(void)token_count;
 	valid_path = find_path(args[0]);
 	if (valid_path == NULL)
 	{
