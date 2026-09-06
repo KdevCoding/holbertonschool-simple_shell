@@ -53,7 +53,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		if (res == 0)
 		{
-			printf("\n");
+			if (isatty(STDIN_FILENO))
+				printf("\n");
 			break;
 		}
 		if (count + 1 >= *n)
