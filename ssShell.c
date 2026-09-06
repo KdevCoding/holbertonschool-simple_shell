@@ -40,6 +40,7 @@ int main(void)
 		char **args;
 		char *input_buffer;
 		int token_count, ret;
+		conv_t f;
 
 		input_buffer = NULL;
 		args = readline(&token_count, &input_buffer);
@@ -60,10 +61,11 @@ int main(void)
 					exit(last_status);
 				}
 			}
-			else if (strcmp(args[0], "env") == 0)
-				printenv();
 			else
-				last_status = forkexec(args);
+			{
+				f = func_spec(args[0]);
+				last_status = f(args);
+			}
 		}
 		free(args);
 		free(input_buffer);
